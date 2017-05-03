@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export const SelectLanguage = (props) => {
-  const languages = ['All', 'JavaScript', 'Python', 'Ruby', 'Java', 'CSS', 'React'];
+  const languages = ['All', 'JavaScript', 'Python', 'Ruby', 'Java', 'CSS'];
 
   return (
     <ul className='languages'>{
