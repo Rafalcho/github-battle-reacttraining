@@ -2,6 +2,7 @@ import React from 'react';
 import {SelectLanguage} from '../helpers/SelectLanguage';
 import {fetchPopularRepos} from '../utils/api';
 import RepoGrid from './RepoGrid.js';
+import Loading from './Loading';
 
 
 class Popular extends React.Component {
@@ -35,7 +36,7 @@ class Popular extends React.Component {
         <SelectLanguage
           selectedLanguage={this.state.selectedLanguage}
           onSelect={this.updateLanguage} />
-        {!this.state.repos ? <p>Loading</p> : <RepoGrid repos={this.state.repos} />}
+        {!this.state.repos ? <Loading /> : <RepoGrid repos={this.state.repos} />}
 
       </div>
     );
