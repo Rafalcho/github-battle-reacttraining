@@ -1,4 +1,8 @@
 import React from 'react';
+import {SelectLanguage} from '../helpers/SelectLanguage';
+
+
+
 
 class Popular extends React.Component {
   constructor(props) {
@@ -15,21 +19,14 @@ class Popular extends React.Component {
     };
 
   render() {
-    const languages = ['All', 'JavaScript', 'Python', 'Ruby', 'Java', 'CSS', 'React'];
+
 
     return (
-      <ul className='languages'>{
-          languages.map((lang) => {
-            return <li
-              key={lang}
-              style={lang === this.state.selectedLanguage ? {color: '#d0021b'} : null}
-              onClick={() => this.updateLanguage(lang)}
-
-              >{lang}</li>;
-          })
-
-        }
-      </ul>
+      <div>
+        <SelectLanguage
+          selectedLanguage={this.state.selectedLanguage}
+          onSelect={this.updateLanguage} />
+      </div>
     );
   }
 }
