@@ -10,9 +10,9 @@ class PlayerInput extends React.Component {
   }
 
   handleChange = (event) => {
-    let value = event.target.value;
+
     this.setState({
-      username: value
+      username: event.target.value
     });
   };
 
@@ -21,7 +21,7 @@ class PlayerInput extends React.Component {
 
     this.props.onSubmit(
       this.props.id,
-      this.props.username
+      this.state.username
     );
   };
 

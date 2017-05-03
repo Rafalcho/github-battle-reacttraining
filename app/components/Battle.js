@@ -1,5 +1,8 @@
 import React from 'react';
 import PlayerInput from './PlayerInput';
+import PlayerPreview from './PlayerPreview';
+import {Link} from 'react-router-dom';
+
 
 class Battle extends React.Component {
   constructor(props) {
@@ -21,9 +24,20 @@ class Battle extends React.Component {
     });
   };
 
+  handleReset = (id) => {
+    this.setState(function() {
+      var newState = {};
+      newState[id + 'Name'] = '';
+      newState[id + 'Image'] =  null;
+      return newState;
+    }); }
+
   render() {
     let playerOneName = this.state.playerOneName;
     let playerTwoName = this.state.playerTwoName;
+    let playerOneImage = this.state.playerOneImage;
+    let playerTwoImage = this.state.playerTwoImage;
+    let match = this.props.match;
 
     return (
       <div>
@@ -35,13 +49,44 @@ class Battle extends React.Component {
               onSubmit={this.handleSubmit}
             />}
 
+            {playerOneImage !== null &&
+            <PlayerPreview
+              avatar={playerOneImage}
+              username={playerOneName}
+            >
+              <button
+                className='reset'
+                onClick={() => this.handleReset('playerOne')}
+                >Reset</button>
+            </PlayerPreview>}
+
           {!playerTwoName &&
             <PlayerInput
               id='playerTwo'
               label='Player Two'
               onSubmit={this.handleSubmit}
             />}
+
+            {playerTwoImage !== null &&
+            <PlayerPreview
+              avatar={playerTwoImage}
+              username={playerTwoName}
+            >
+              <button
+                className='reset'
+                onClick={() => this.handleReset('playerTwo')}
+              >Reset</button>
+            </PlayerPreview>}
         </div>
+
+        {playerOneImage && playerTwoImage &&
+        <Link
+          className='button'
+          to={{
+            pathname: match.url + '/results',
+            search: `?playerOneName=` + playerOneName + `&playerTwoName=` + playerTwoName
+          }}
+        >Battle</Link>}
       </div>
     );
   }
