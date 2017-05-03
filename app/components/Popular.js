@@ -1,7 +1,6 @@
 import React from 'react';
 import {SelectLanguage} from '../helpers/SelectLanguage';
-
-
+import {fetchPopularRepos} from '../utils/api';
 
 
 class Popular extends React.Component {

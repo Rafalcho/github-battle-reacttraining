@@ -7,12 +7,13 @@ export const SelectLanguage = (props) => {
   return (
     <ul className='languages'>{
         languages.map((lang) => {
-          return <li
-            key={lang}
-            style={lang === props.selectedLanguage ? {color: '#d0021b'} : null}
-            onClick={() => props.onSelect(lang)}
-
-            >{lang}</li>;
+          return (
+            <li
+              key={lang}
+              style={lang === props.selectedLanguage ? {color: '#d0021b'} : null}
+              onClick={() => props.onSelect(lang)}>
+            {lang}
+          </li>);
         })
 
       }
